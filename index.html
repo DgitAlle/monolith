@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Le Monolithe</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ───────── PAGE DE PRÉSENTATION ───────── -->
+<div id="intro" class="center">
+  <h1>LE MONOLITHE</h1>
+
+  <p>
+    Un signal est apparu.<br>
+    Il évolue en temps réel, compressé, bruité, fragmenté.<br>
+    Chaque couche masque une information plus profonde.
+  </p>
+
+  <p>
+    Pour atteindre le cœur du monolithe, vous devrez résoudre
+    <strong>cinq énigmes successives</strong>.<br>
+    Chaque réponse correcte retire une couche de protection.
+  </p>
+
+  <p class="warning">
+    Le temps continue de s’écouler.<br>
+    Le monolithe ne s’arrête jamais.
+  </p>
+
+  <h3>Accès restreint</h3>
+  <input type="password" id="pass" placeholder="Mot de passe">
+  <button onclick="checkPass()">Entrer</button>
+
+  <p id="passError" class="error hidden">Mot de passe incorrect.</p>
+</div>
+
+<!-- ───────── JEU ───────── -->
+<div id="game" class="hidden center">
+  <div id="riddle" class="riddle"></div>
+
+  <input id="answer" placeholder="Votre réponse">
+  <button onclick="check()">Valider</button>
+
+  <pre id="output" class="monolith"></pre>
+
+  <button onclick="resetGame()" class="reset">Réinitialiser</button>
+</div>
+
+<!-- ───────── SCRIPT MOT DE PASSE ───────── -->
+<script>
+function checkPass() {
+  const pass = document.getElementById("pass").value;
+  const error = document.getElementById("passError");
+
+  if (pass === "test") { //change ici
+    document.getElementById("intro").classList.add("hidden");
+    document.getElementById("game").classList.remove("hidden");
+  } else {
+    error.classList.remove("hidden");
+  }
+}
+</script>
+
+<!-- ───────── JEU OBFUSQUÉ ───────── -->
+<script src="app.obf.js"></script>
+
+</body>
+</html>

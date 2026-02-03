@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  background: #000;
+  color: #0f0;
+  font-family: monospace;
+}
+
+.center {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+input, button {
+  margin: 6px;
+  padding: 8px;
+  background: #000;
+  color: #0f0;
+  border: 1px solid #0f0;
+}
+
+button:hover {
+  background: #0f0;
+  color: #000;
+  cursor: pointer;
+}
+
+.monolith {
+  margin-top: 20px;
+  line-height: 1.1;
+}
+
+.riddle {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.hidden {
+  display: none;
+}
+
+.warning {
+  opacity: 0.8;
+  font-size: 0.9em;
+}
+
+.error {
+  color: red;
+}
+
+.reset {
+  margin-top: 15px;
+}
