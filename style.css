@@ -13,7 +13,6 @@ body {
   align-items: center;
   text-align: center;
   padding: 10px;
-  box-sizing: border-box;
 }
 
 input, button {
@@ -33,12 +32,10 @@ button:hover {
 .monolith {
   margin-top: 20px;
   line-height: 1.1;
-  white-space: pre-wrap;   /* permet les retours à la ligne automatiques */
-  word-break: break-word;   /* force le passage à la ligne si trop long */
-  overflow-wrap: anywhere;  /* sécurité supplémentaire pour les très longs blocs */
-  max-width: 100%;          /* ne dépasse jamais l’écran */
+  white-space: pre-wrap; /* pour que les sauts de ligne soient respectés */
+  word-break: break-word; /* pour forcer retour à la ligne sur mobile */
+  max-width: 100%; /* responsive */
 }
-
 
 .riddle {
   margin-bottom: 10px;
