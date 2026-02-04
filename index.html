@@ -33,6 +33,11 @@
   <button onclick="checkPass()">Entrer</button>
 
   <p id="passError" class="error hidden">Mot de passe incorrect.</p>
+
+  <!-- Nouveau paragraphe -->
+  <p>
+    PS : Désolé pour le mot de passe à rallonge mais c'est une sécurité envers les petits malins voulant arrêter ce jeu fantastique.
+  </p>
 </div>
 
 <!-- ───────── JEU ───────── -->
@@ -47,20 +52,54 @@
   <button onclick="resetGame()" class="reset">Réinitialiser</button>
 </div>
 
-<!-- ───────── SCRIPT MOT DE PASSE ───────── -->
+<!-- ───────── SCRIPT MOT DE PASSE ET LOCALSTORAGE ───────── -->
 <script>
 function checkPass() {
-  const pass = document.getElementById("pass").value;
+  const passInput = document.getElementById("pass").value;
   const error = document.getElementById("passError");
 
-  if (pass === "test") { //change ici
+  if (passInput === "1Aa11mV1j@47:4CF82&V:0FA23") {
+    localStorage.setItem("monolithAuthorized", "true");
+
     document.getElementById("intro").classList.add("hidden");
     document.getElementById("game").classList.remove("hidden");
+
+    // Réinitialiser le jeu seulement la première fois
+    if(!localStorage.getItem("monolithStarted")) {
+      // Initialiser l'énigme et l'affichage
+      enigme1 = enigme2 = enigme3 = enigme4 = enigme5 = false;
+      history = [];
+      frameCount = 0;
+      startTime = Date.now();
+      localStorage.setItem("monolithStart", startTime);
+      currentRiddle = 0;
+
+      showRiddle(); // Affiche la première énigme
+      localStorage.setItem("monolithStarted", "true");
+    }
+
+    // Lancer la boucle du monolithe
+    start(document.getElementById("output"));
   } else {
     error.classList.remove("hidden");
   }
 }
+
+window.onload = () => {
+  if(localStorage.getItem("monolithAuthorized") === "true") {
+    document.getElementById("intro").classList.add("hidden");
+    document.getElementById("game").classList.remove("hidden");
+
+    // Afficher la bonne énigme
+    showRiddle();
+
+    // Lancer la boucle du monolithe
+    start(document.getElementById("output"));
+  }
+};
 </script>
+
+
 
 <!-- ───────── JEU OBFUSQUÉ ───────── -->
 <script src="app.obf.js"></script>
