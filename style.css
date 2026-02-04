@@ -33,12 +33,12 @@ button:hover {
 .monolith {
   margin-top: 20px;
   line-height: 1.1;
-  max-width: 100%;           /* jamais dépasser l’écran */
-  word-wrap: break-word;      /* coupe les lignes trop longues */
-  overflow-wrap: break-word;  /* support moderne */
-  white-space: pre-wrap;      /* préserve le formatage mais autorise le wrap */
-  font-size: 0.9em;           /* légèrement plus petit pour mobile */
+  white-space: pre-wrap;   /* permet les retours à la ligne automatiques */
+  word-break: break-word;   /* force le passage à la ligne si trop long */
+  overflow-wrap: anywhere;  /* sécurité supplémentaire pour les très longs blocs */
+  max-width: 100%;          /* ne dépasse jamais l’écran */
 }
+
 
 .riddle {
   margin-bottom: 10px;
