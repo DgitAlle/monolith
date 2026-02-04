@@ -12,6 +12,8 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 input, button {
@@ -31,6 +33,11 @@ button:hover {
 .monolith {
   margin-top: 20px;
   line-height: 1.1;
+  max-width: 100%;           /* jamais dépasser l’écran */
+  word-wrap: break-word;      /* coupe les lignes trop longues */
+  overflow-wrap: break-word;  /* support moderne */
+  white-space: pre-wrap;      /* préserve le formatage mais autorise le wrap */
+  font-size: 0.9em;           /* légèrement plus petit pour mobile */
 }
 
 .riddle {
