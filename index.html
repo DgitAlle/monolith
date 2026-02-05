@@ -2,6 +2,11 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+
+<!-- 🔒 Bloque le zoom automatique mobile -->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>Le Monolithe</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -19,8 +24,7 @@
 
   <p>
     Pour atteindre le cœur du monolithe, vous devrez résoudre
-    <strong>cinq énigmes successives</strong>.<br>
-    Chaque réponse correcte retire une couche de protection.
+    <strong>cinq énigmes successives</strong>.
   </p>
 
   <p class="warning">
@@ -35,36 +39,40 @@
   <p id="passError" class="error hidden">Mot de passe incorrect.</p>
 
   <p>
-    PS: Désolé pour le mot de passe à rallonge mais c'est une sécurité envers les petits malins voulant arrêter ce jeu fantastique
+    PS : Désolé pour le mot de passe à rallonge mais c'est une sécurité envers les petits malins
   </p>
 </div>
 
 <!-- ───────── JEU ───────── -->
-<div id="game" class="hidden center">
-  <div id="riddle" class="riddle"></div>
+<div id="game" class="hidden">
 
-  <input id="answer" placeholder="Votre réponse">
-  <button onclick="check()">Valider</button>
+  <!-- UI FIXE -->
+  <div id="ui-fixed">
+    <div id="riddle" class="riddle"></div>
 
+    <div class="answer-box">
+      <input id="answer" placeholder="Votre réponse">
+      <button onclick="check()">Valider</button>
+    </div>
+  </div>
+
+  <!-- MONOLITHE -->
   <pre id="output" class="monolith"></pre>
 
   <button onclick="resetGame()" class="reset">Réinitialiser</button>
 </div>
 
-<!-- ───────── SCRIPT MOT DE PASSE ET LOCALSTORAGE ───────── -->
+<!-- ───────── SCRIPT MOT DE PASSE ───────── -->
 <script>
 function checkPass() {
   const passInput = document.getElementById("pass").value;
   const error = document.getElementById("passError");
 
-  if (passInput === "test") { // ton mot de passe
-    // On stocke dans localStorage que l'utilisateur est autorisé
+  if (passInput === "1Aa11mV1j@47:4CF82&V:0FA23") {
     localStorage.setItem("monolithAuthorized", "true");
-
     document.getElementById("intro").classList.add("hidden");
     document.getElementById("game").classList.remove("hidden");
 
-    // On peut lancer resetGame la première fois
     if(!localStorage.getItem("monolithStarted")) {
       resetGame();
       localStorage.setItem("monolithStarted", "true");
@@ -74,23 +82,14 @@ function checkPass() {
   }
 }
 
-// Au chargement de la page, vérifier si l'utilisateur est déjà autorisé
 window.onload = () => {
   if(localStorage.getItem("monolithAuthorized") === "true") {
     document.getElementById("intro").classList.add("hidden");
     document.getElementById("game").classList.remove("hidden");
-
-    // Lancer le jeu
-    if(!localStorage.getItem("monolithStarted")) {
-      resetGame();
-      localStorage.setItem("monolithStarted", "true");
-    }
   }
 };
 </script>
 
-<!-- ───────── JEU OBFUSQUÉ ───────── -->
 <script src="app.obf.js"></script>
-
 </body>
 </html>

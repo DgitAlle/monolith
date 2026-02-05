@@ -5,6 +5,7 @@ body {
   font-family: monospace;
 }
 
+/* Intro centrée comme avant */
 .center {
   min-height: 100vh;
   display: flex;
@@ -15,9 +16,11 @@ body {
   padding: 10px;
 }
 
+/* Anti-zoom mobile */
 input, button {
   margin: 6px;
   padding: 8px;
+  font-size: 16px; /* CRUCIAL */
   background: #000;
   color: #0f0;
   border: 1px solid #0f0;
@@ -29,32 +32,46 @@ button:hover {
   cursor: pointer;
 }
 
-.monolith {
-  margin-top: 20px;
-  line-height: 1.1;
-  white-space: pre-wrap; /* pour que les sauts de ligne soient respectés */
-  word-break: break-word; /* pour forcer retour à la ligne sur mobile */
-  max-width: 100%; /* responsive */
+/* ───────── UI FIXE ───────── */
+#ui-fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #000;
+  padding: 10px;
+  border-bottom: 1px solid #0f0;
+  z-index: 10;
+}
+
+.answer-box {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
 }
 
 .riddle {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   font-size: 1.1em;
 }
 
-.hidden {
-  display: none;
+/* ───────── MONOLITHE ───────── */
+.monolith {
+  margin: 140px auto 0 auto; /* auto = centrage horizontal */
+  padding: 10px;
+
+  line-height: 1.1;
+  white-space: pre;         /* binaire intact */
+  font-family: monospace;
+
+  max-width: fit-content;   /* largeur = contenu */
+  overflow-x: auto;
+
+  min-height: 200px;        /* stabilité visuelle */
 }
 
-.warning {
-  opacity: 0.8;
-  font-size: 0.9em;
-}
 
-.error {
-  color: red;
-}
-
-.reset {
-  margin-top: 15px;
-}
+/* Divers */
+.hidden { display: none; }
+.warning { opacity: 0.8; font-size: 0.9em; }
+.error { color: red; }
+.reset { margin: 15px auto; display: block; }
